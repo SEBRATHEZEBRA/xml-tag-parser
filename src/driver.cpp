@@ -1,10 +1,16 @@
 #include <iostream>
+#include <string>
 #include <cstdlib>
 #include "tagParser.h"
+
+void clear(void) {
+  system("clear");
+}
 
 int main(void) {
 
   char choice;
+  std::string file;
 
   for (;;) {
     std::cout << "r: Read and process tag file" << std::endl;
@@ -16,14 +22,33 @@ int main(void) {
 
     std::cin >> choice;
 
-    if (choice == 'q') {
+    if (choice == 'r') {
+
+      std::cout << "Enter the name of the tag file:" << std::endl;
+      std::cin >> file;
+
+      OLVSEB001::inputFile(file);
+
+    } else if (choice == 'p') {
+
+
+
+    } else if (choice == 'd') {
+
+
+
+    } else if (choice == 'l') {
+
+
+
+    } else if (choice == 'q') {
+
+      clear();
       break;
+
     }
+
   }
 
   return 0;
-}
-
-void clear(void) {
-  system("clear");
 }
