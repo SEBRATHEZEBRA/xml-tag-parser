@@ -1,3 +1,9 @@
+/*
+ * Header file of a xml tag parser.
+ * Author: Sebastian Oliver
+ * Date: 24/03/2021
+ */
+
 #ifndef TAGPARSER_H
 #define TAGPARSER_H
 

@@ -1,3 +1,9 @@
+/*
+ * Source file of a xml tag parser.
+ * Author: Sebastian Oliver
+ * Date: 24/03/2021
+ */
+ 
 #include <string>
 #include <fstream>
 #include <iostream>
