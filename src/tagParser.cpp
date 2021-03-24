@@ -13,6 +13,21 @@ struct OLVSEB001::TagStruct {
   std::string text;
 };
 
+void OLVSEB001::printTag(std::string tagName) {
+
+  int i = searchVector(tagName);
+  if (i == -1) {
+
+    std::cout << "Tag does not exist." << std::endl;
+
+  } else {
+
+    std::cout << tags.at(i).name << ", " << tags.at(i).count << ", " << tags.at(i).text << std::endl;
+
+  }
+
+}
+
 void OLVSEB001::printAllTags() {
   for (OLVSEB001::TagStruct e:tags) {
       std::cout << e.name << ", " << e.count << ", " << e.text << std::endl;

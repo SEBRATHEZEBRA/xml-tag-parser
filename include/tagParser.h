@@ -5,6 +5,7 @@
 
 namespace OLVSEB001 {
   struct TagStruct;
+  void printTag(std::string tagName);
   void printAllTags();
   int searchVector(std::string tagName);
   void addToVector(std::string tagName, std::string text);
