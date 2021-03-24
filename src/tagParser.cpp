@@ -5,15 +5,20 @@
 #include <algorithm>
 #include "tagParser.h"
 
+// Creating a global vector variable to hold all the tags.
 std::vector<OLVSEB001::TagStruct> tags;
 
+// Creating a structure that stores the required information of a tag.
 struct OLVSEB001::TagStruct {
+
   std::string name;
   int count;
   std::string text;
 };
 
+// Writes the tag data stored in the vector to a file called tag.txt.
 void OLVSEB001::writeToFile() {
+
   std::string line;
 
   std::ofstream ofs("output/tag.txt");
@@ -22,8 +27,11 @@ void OLVSEB001::writeToFile() {
     ofs << line << std::endl;
   }
 
+  std::cout << "Tag information has to been written to output/tag.txt." << std::endl;
+
 }
 
+// Prints out the tag information of the tag provided, if its found.
 void OLVSEB001::printTag(std::string tagName) {
 
   int i = searchVector(tagName);
@@ -39,14 +47,18 @@ void OLVSEB001::printTag(std::string tagName) {
 
 }
 
+// Prints out all the information of the tags stored in the vector variable.
 void OLVSEB001::printAllTags() {
+
   for (OLVSEB001::TagStruct e:tags) {
       std::cout << e.name << ", " << e.count << ", " << e.text << std::endl;
   }
 
 }
 
+// Searches the vector variable to see if it contains the tagName, returning the index of the tagName if found.
 int OLVSEB001::searchVector(std::string tagName) {
+
   int i = 0;
   for (OLVSEB001::TagStruct e:tags) {
     if (e.name.compare(tagName) == 0)
@@ -59,7 +71,9 @@ int OLVSEB001::searchVector(std::string tagName) {
   return -1;
 }
 
+// Adds the provided tag information to the vector variable, either by creating a new structure or adding to an already defined one.
 void OLVSEB001::addToVector(std::string tagName, std::string text) {
+
   int exists = OLVSEB001::searchVector(tagName);
   if (exists > -1) {
     tags.at(exists).count++;
@@ -76,7 +90,9 @@ void OLVSEB001::addToVector(std::string tagName, std::string text) {
 
 }
 
+// Splits the line into their tag names and text inbetween the tags.
 void OLVSEB001::lineSplitter(std::string line) {
+
   std::string tagName, text;
   int first, second;
 
@@ -91,7 +107,9 @@ void OLVSEB001::lineSplitter(std::string line) {
 
 }
 
+// Reads the provided input file into a string line by line.
 void OLVSEB001::inputFile(std::string file) {
+
   std::ifstream ifs(file.c_str());
   std::string line, prevLine;
   bool multiple;
@@ -103,6 +121,7 @@ void OLVSEB001::inputFile(std::string file) {
       continue;
     } else {
 
+        // Checking if a tag is multiple lines or not, if it is the lines are concatenated together.
         if (line.length() > line.find("</") && !multiple) {
 
           OLVSEB001::lineSplitter(line);
@@ -120,8 +139,6 @@ void OLVSEB001::inputFile(std::string file) {
         }
 
     }
-
-
 
   }
 

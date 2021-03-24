@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Declaring all my functions and the structure I use in my source program "tagParser.cpp."
 namespace OLVSEB001 {
   struct TagStruct;
   void writeToFile();
