@@ -15,7 +15,7 @@ int main(void) {
   for (;;) {
 
     std::cout << "r: Read and process tag file" << std::endl;
-    std::cout << "p: Print all the tags" << std::endl;
+    std::cout << "p: Print all tags" << std::endl;
     std::cout << "d: Dump tags and data to a file called tag.txt" << std::endl;
     std::cout << "l: List tag data for given tag to cout" << std::endl;
     std::cout << "q: Quit" << std::endl;
@@ -35,7 +35,7 @@ int main(void) {
 
     } else if (choice == 'd') {
 
-
+      OLVSEB001::writeToFile();
 
     } else if (choice == 'l') {
 

@@ -13,6 +13,17 @@ struct OLVSEB001::TagStruct {
   std::string text;
 };
 
+void OLVSEB001::writeToFile() {
+  std::string line;
+
+  std::ofstream ofs("output/tag.txt");
+  for (OLVSEB001::TagStruct e:tags) {
+    line = e.name + ", " + std::to_string(e.count) + ", " + e.text;
+    ofs << line << std::endl;
+  }
+
+}
+
 void OLVSEB001::printTag(std::string tagName) {
 
   int i = searchVector(tagName);
