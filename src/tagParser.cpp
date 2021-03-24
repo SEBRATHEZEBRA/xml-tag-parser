@@ -64,13 +64,37 @@ void OLVSEB001::lineSplitter(std::string line) {
 
 void OLVSEB001::inputFile(std::string file) {
   std::ifstream ifs(file.c_str());
-  std::string line;
+  std::string line, prevLine;
+  bool multiple;
 
+  prevLine = "";
   while (std::getline(ifs, line, '\n')) {
-    OLVSEB001::lineSplitter(line);
-  }
 
-  //OLVSEB001::printAllTags();
+    if (line.compare("") == 0) {
+      continue;
+    } else {
+
+        if (line.length() > line.find("</") && !multiple) {
+
+          OLVSEB001::lineSplitter(line);
+
+        } else if (line.length() > line.find("</") && multiple) {
+
+          prevLine = prevLine + line;
+          OLVSEB001::lineSplitter(prevLine);
+          prevLine = "";
+
+        } else {
+          multiple = true;
+          prevLine = prevLine + line;
+
+        }
+
+    }
+
+
+
+  }
 
   ifs.close();
 }
