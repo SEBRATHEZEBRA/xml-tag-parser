@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "tagParser.h"
 
 std::vector<OLVSEB001::TagStruct> tags;
@@ -52,6 +53,8 @@ void OLVSEB001::addToVector(std::string tagName, std::string text) {
 void OLVSEB001::lineSplitter(std::string line) {
   std::string tagName, text;
   int first, second;
+
+  std::replace(line.begin(), line.end(), '\t', ' ');
 
   first = line.find('>');
   tagName = line.substr(1, first - 1);
