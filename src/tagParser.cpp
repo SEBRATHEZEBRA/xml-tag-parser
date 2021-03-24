@@ -8,18 +8,28 @@ std::vector<OLVSEB001::TagStruct> tags;
 
 struct OLVSEB001::TagStruct {
   std::string name;
-  int pairCount;
+  int count;
   std::string text;
 };
 
-int OLVSEB001::searchVector(std::string tag) {
+int OLVSEB001::searchVector(std::string tagName) {
+  int i = 0;
+  for (OLVSEB001::TagStruct e:tags) {
+    if (e.name.compare(tagName) == 0)
+    {
+      return i;
+    }
+    i++;
+  }
 
+  return -1;
 }
 
 void OLVSEB001::addToVector(std::string tagName, std::string text) {
   int exists = OLVSEB001::searchVector(tagName);
   if (exists > -1) {
-
+    tags.at(exists).count++;
+    tags.at(exists).text = text + ":" + text;
   }
 }
 
@@ -41,9 +51,7 @@ void OLVSEB001::inputFile(std::string file) {
   std::string line;
 
   while (std::getline(ifs, line, '\n')) {
-
     OLVSEB001::lineSplitter(line);
-
   }
 
   ifs.close();
