@@ -12,6 +12,13 @@ struct OLVSEB001::TagStruct {
   std::string text;
 };
 
+void OLVSEB001::printAllTags() {
+  for (OLVSEB001::TagStruct e:tags) {
+      std::cout << e.name << ", " << e.count << ", " << e.text << std::endl;
+  }
+
+}
+
 int OLVSEB001::searchVector(std::string tagName) {
   int i = 0;
   for (OLVSEB001::TagStruct e:tags) {
@@ -29,8 +36,17 @@ void OLVSEB001::addToVector(std::string tagName, std::string text) {
   int exists = OLVSEB001::searchVector(tagName);
   if (exists > -1) {
     tags.at(exists).count++;
-    tags.at(exists).text = text + ":" + text;
+    tags.at(exists).text = tags.at(exists).text + ":" + text;
+  } else {
+
+    OLVSEB001::TagStruct getOn;
+    getOn.name = tagName;
+    getOn.count = 1;
+    getOn.text = text;
+    tags.push_back(getOn);
+
   }
+
 }
 
 void OLVSEB001::lineSplitter(std::string line) {
@@ -53,6 +69,8 @@ void OLVSEB001::inputFile(std::string file) {
   while (std::getline(ifs, line, '\n')) {
     OLVSEB001::lineSplitter(line);
   }
+
+  //OLVSEB001::printAllTags();
 
   ifs.close();
 }

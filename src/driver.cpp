@@ -12,7 +12,7 @@ int main(void) {
   char choice;
   std::string file;
 
-  for (;;) {
+  while() {
     std::cout << "r: Read and process tag file" << std::endl;
     std::cout << "p: Print all the tags" << std::endl;
     std::cout << "d: Dump tags and data to a file called tag.txt" << std::endl;
