@@ -1,4 +1,4 @@
-# XML Tag Parser
+# C++ XML Tag Parser
 
 ## Files used:\
 src/ -> tagParser.cpp: The source file of the tag parser, contains the data
